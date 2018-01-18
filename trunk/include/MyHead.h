@@ -23,6 +23,9 @@ using namespace std;
 #define trials_number 10
 #define events_per_trial 1e+9
 
+const static time_t time_stamp = time(0);       //Setting timestamp for the out files
+
+
 const static Int_t n_checked_detectors = 2;                                   //Number of detectors to check with this Toy... 
 const static Double_t Lgen = 3.90;                                            //Side of the generation plane in meters 
 const static Double_t Ldet = 0.026*22;                                        //Side of the square detector in meters  
@@ -36,10 +39,15 @@ const static Double_t cos2_theta_max = 1;
 
 const static UInt_t trandom3_seed = 9;
 
-////// REMEMBER TO CHAGE output_path VARIABLE IN logs_witer.cpp WHEN CHANGE COMPUTER /////////////
+//////////////////////////// Outh paths for logs and ROOT files:             !!!!!!!!!!!!!!! ATTENCTION !!! Here pat is written for TRUNK directory ! Modify it if necessary !!!!
 
-extern string output_path_creator(time_t &time_stamp,const Int_t out_choose);
-extern void log_file_init(ofstream &out_file,time_t &time_stamp);
+const static string output_log = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/dampe-gacceptance-svn/trunk/logs/";
+const static string output_root = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/dampe-gacceptance-svn/trunk/results/";
+
+//////////////////////////////////////////////////////////////////////////////////
+
+extern string output_path_creator(const Int_t out_choose);
+extern void log_file_init(ofstream &out_file);
 extern void generate_coordinate(Double_t X[],TRandom3 *r_gen);
 extern void generate_theta_phi(Double_t &theta,Double_t &phi,TRandom3 *r_gen);
 extern void obtain_direction(Double_t theta,Double_t phi,Double_t dir[]);
