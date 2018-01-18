@@ -1,39 +1,34 @@
 
 #include "MyHead.h"
 
-string output_path_creator(time_t &time_stamp,const Int_t out_choose) {
+string output_path_creator(const Int_t out_choose) {
   // out_choose == 0 means we are creating the path for a log file
   // out_choose == 0 means we are creating the path for a ROOT output file
 
-  string output_path;
-  time_t t_stamp;
+  string output;
   
   switch(out_choose) {
 
-  case 0: 
-    output_path = "/Users/enrico/Documents/Università/Magistrale/Tesi/Anisotropy/MyCode/ToyMC_Anisotrypy_Study/toymc-anisotropy-study-code/logs/";
-    t_stamp = time(0);
-    time_stamp = t_stamp;
-    output_path+=to_string((long long)t_stamp);
-    output_path+=".txt";
-    cout<<"\nWritten log file: -> \t "<<output_path<<endl;
+  case 0:
+    output = output_log;
+    output+=to_string((long long)time_stamp);
+    output+=".txt";
+    cout<<"\nWritten log file: -> \t "<<output<<endl;
     break;
 
   case 1:
-    output_path = "/Users/enrico/Documents/Università/Magistrale/Tesi/Anisotropy/MyCode/ToyMC_Anisotrypy_Study/toymc-anisotropy-study-code/results/";
-    t_stamp = time(0);
-    time_stamp = t_stamp;
-    output_path+=to_string((long long)t_stamp);
-    output_path+="_acceptance_result.root";
-    cout<<"\nWritten ROOT file: -> \t "<<output_path<<endl;
+    output = output_root;
+    output+=to_string((long long)time_stamp);
+    output+="_acceptance_result.root";
+    cout<<"\nWritten ROOT file: -> \t "<<output<<endl;
     break;
 
   }
   
-  return output_path;
+  return output;
 }
 
-void log_file_init(ofstream &out_file,time_t &time_stamp) {
+void log_file_init(ofstream &out_file) {
   out_file << "********************* Automatic Log File Generator *******************"<<endl<<endl;
   
   out_file << "////////////////////////// Simulation Parameters //////////////////////////"<<endl<<endl;

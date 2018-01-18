@@ -10,8 +10,7 @@ int main(int argc,char *argv[])
 {
   Double_t X[3],dir[3],theta,phi,acceptance[trials_number],acceptance_rel_diff[trials_number],analytical_acceptance,costheta,bin_content;
   Int_t perc,accepted_events[trials_number];
-  time_t time_stamp;
-  string log_path = output_path_creator(time_stamp,0),root_out_path = output_path_creator(time_stamp,1);
+  string log_path = output_path_creator(0),root_out_path = output_path_creator(1);
   Bool_t accepted_event;
   
   //////////////////////////////////////
@@ -22,7 +21,7 @@ int main(int argc,char *argv[])
     exit(-1);
   }
 
-  log_file_init(output_log_file,time_stamp);
+  log_file_init(output_log_file);
   
   ///////////////////////// Defining histos....
 
