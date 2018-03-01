@@ -40,12 +40,28 @@ int main(int argc,char *argv[])
   TH2D* theta_phi_all = new TH2D("Generated_Theta_Phi","Generated Theta/Phi", 1000, 0, 1, 1000, 0, 2.0*TMath::Pi());
   theta_phi_all->SetXTitle("cos(#theta)");
   theta_phi_all->SetYTitle("#phi (rad)");
-  
+
+  TH1D *theta_gen = new TH1D("theta_gen"," cos(#theta) distribution ",1000,0,1);
+  theta_gen->SetXTitle("cos(#theta)");
+  theta_gen->SetYTitle("entries");
+
+  TH1D *phi_gen = new TH1D("phi_gen"," #phi distribution ",1000,0,2*TMath::Pi());
+  phi_gen->SetXTitle("#phi");
+  phi_gen->SetYTitle("entries");
+
   TH2D* theta_phi_acceptance = new TH2D("Acceptance","Theta/Phi Acceptance", 1000, 0, 1, 1000, 0, 2.0*TMath::Pi());
   theta_phi_acceptance->SetXTitle("cos(#theta)");
   theta_phi_acceptance->SetYTitle("#phi (rad)");
   theta_phi_acceptance->SetZTitle("Acceptance (m^{2})");
 
+  TH1D *Acceptance_X_Proj = new TH1D("Acceptance_X_Proj"," cos(#theta) distribution ",1000,0,1);
+  Acceptance_X_Proj->SetXTitle("cos(#theta)");
+  Acceptance_X_Proj->SetYTitle("entries");
+
+  TH1D *Acceptance_Y_Proj = new	TH1D("Acceptance_Y_Proj"," #phi distribution ",1000,0,2*TMath::Pi());
+  Acceptance_X_Proj->SetXTitle("#phi");
+  Acceptance_X_Proj->SetYTitle("entries");
+  
 
   //////////////////////////////////////////////////////////////////
   
@@ -72,11 +88,15 @@ int main(int argc,char *argv[])
       generate_coordinate(X,rand_gen);
       generate_theta_phi(theta,phi,rand_gen);
       theta_phi_all->Fill(fabs(cos(theta)),phi);
+      theta_gen->Fill(fabs(cos(theta)));
+      phi_gen->Fill(phi);
       obtain_direction(theta,phi,dir);
       check_acceptance(X,dir,theta,accepted_event);
       if(accepted_event) {
 	accepted_events[idx_trial]++;
 	theta_phi_acceptance->Fill(fabs(cos(theta)),phi);
+	Acceptance_X_Proj->Fill(fabs(cos(theta)));
+	Acceptance_Y_Proj->Fill(phi);
       }
     } //end for on events for each trial
   } //end for on trials
@@ -126,6 +146,14 @@ int main(int argc,char *argv[])
   theta_phi_all->Write();
   theta_phi_acceptance->Write();
 
+  theta_gen->Fit("pol1");
+  theta_gen->Write();
+
+  phi_gen->Fit("pol0");
+  phi_gen->Write();
+  
+  Acceptance_X_Proj->Write();
+  Acceptance_Y_Proj->Write();
   
   output_log_file.close();
   acceptance_results->Close();
