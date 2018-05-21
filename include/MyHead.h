@@ -39,10 +39,10 @@ const static Double_t cos2_theta_max = 1;
 
 const static UInt_t trandom3_seed = 9;
 
-//////////////////////////// Outh paths for logs and ROOT files:             !!!!!!!!!!!!!!! ATTENCTION !!! Here pat is written for TRUNK directory ! Modify it if necessary !!!!
+//////////////////////////// Outh paths for logs and ROOT files:
 
-const static string output_log = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/dampe-gacceptance-svn/trunk/logs/";
-const static string output_root = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/dampe-gacceptance-svn/trunk/results/";
+const static string output_log = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/MyRepos/GitHub/Stuff/DAMPE-GAcceptance/logs/";
+const static string output_root = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/MyRepos/GitHub/Stuff/DAMPE-GAcceptance/results/";
 
 //////////////////////////////////////////////////////////////////////////////////
 

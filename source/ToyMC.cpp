@@ -55,9 +55,9 @@ int main(int argc,char *argv[])
     theta_phi_acceptance->SetZTitle("Acceptance (m^{2})");
     
     TH2D* theta_phi_inside = new TH2D("EventsDistribution","Events Angular Distibution", 1000, 0, 1, 1000, 0, 2.0*TMath::Pi());
-    theta_phi_acceptance->SetXTitle("cos(#theta)");
-    theta_phi_acceptance->SetYTitle("#phi (rad)");
-    theta_phi_acceptance->SetZTitle("#events");
+    theta_phi_inside->SetXTitle("cos(#theta)");
+    theta_phi_inside->SetYTitle("#phi (rad)");
+    theta_phi_inside->SetZTitle("#events");
     
     TH1D *Acceptance_X_Proj = new TH1D("Acceptance_X_Proj"," cos(#theta) distribution ",1000,0,1);
     Acceptance_X_Proj->SetXTitle("cos(#theta)");
@@ -100,7 +100,7 @@ int main(int argc,char *argv[])
             if(accepted_event) {
                 accepted_events[idx_trial]++;
                 theta_phi_acceptance->Fill(fabs(cos(theta)),phi);
-                theta_phi_inside->Fill(fabs(theta),phi);
+                theta_phi_inside->Fill(fabs(cos(theta)),phi);
                 Acceptance_X_Proj->Fill(fabs(cos(theta)));
                 Acceptance_Y_Proj->Fill(phi);
             }
@@ -121,16 +121,18 @@ int main(int argc,char *argv[])
         output_log_file << "\n\nAccepted "<<accepted_events[idx_trial]<<" events over "<<events_per_trial<<endl;
         output_log_file << "Acceptance: "<<acceptance[idx_trial]<<" m^2sr"<<endl;
         output_log_file << "Acceptance relatice difference: "<<acceptance_rel_diff[idx_trial]<<endl;
-    
+        
         hacc->Fill(acceptance[idx_trial]);
         haccreldiff->Fill(acceptance[idx_trial]);
     }
 
-  ///////////////////// Computing final histos ///////////////////// 
-  
+    ///////////////////// Computing final histos /////////////////////
+    
     theta_phi_acceptance->Divide(theta_phi_all);
     theta_phi_acceptance->Scale(TMath::Power(Lgen,2));
-
+    
+    theta_phi_inside->Scale(TMath::Power(Lgen,2));
+    
     for (Int_t xx=1; xx<=theta_phi_acceptance->GetNbinsX(); xx++) {
         costheta = theta_phi_acceptance->GetXaxis()->GetBinCenter(xx);
         for (Int_t yy=1; yy<=theta_phi_acceptance->GetNbinsY(); yy++) {
@@ -138,7 +140,7 @@ int main(int argc,char *argv[])
             theta_phi_acceptance->SetBinContent(xx, yy, costheta*bin_content);
         }
     }
-
+    
   
     /////////////////////////// Closing files and writing objects ////////////////////////
 
