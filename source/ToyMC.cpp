@@ -49,17 +49,17 @@ int main(int argc,char *argv[])
     phi_gen->SetXTitle("#phi");
     phi_gen->SetYTitle("entries");
 
-    TH2D* theta_phi_acceptance = new TH2D("Acceptance","Theta/Phi Acceptance", 1000, 0, 1, 1000, 0, 2.0*TMath::Pi());
+    TH2D* theta_phi_acceptance = new TH2D("Acceptance","Theta/Phi Acceptance", 1000, 0.5, 1, 1000, 0, 2.0*TMath::Pi());
     theta_phi_acceptance->SetXTitle("cos(#theta)");
     theta_phi_acceptance->SetYTitle("#phi (rad)");
     theta_phi_acceptance->SetZTitle("Acceptance (m^{2})");
     
-    TH2D* theta_phi_inside = new TH2D("EventsDistribution","Events Angular Distibution", 1000, 0, 1, 1000, 0, 2.0*TMath::Pi());
+    TH2D* theta_phi_inside = new TH2D("EventsDistribution","Events Angular Distibution", 1000, 0.5, 1, 1000, 0, 2.0*TMath::Pi());
     theta_phi_inside->SetXTitle("cos(#theta)");
     theta_phi_inside->SetYTitle("#phi (rad)");
     theta_phi_inside->SetZTitle("#events");
     
-    TH1D *Acceptance_X_Proj = new TH1D("Acceptance_X_Proj"," cos(#theta) distribution ",1000,0,1);
+    TH1D *Acceptance_X_Proj = new TH1D("Acceptance_X_Proj"," cos(#theta) distribution ",1000,0.5,1);
     Acceptance_X_Proj->SetXTitle("cos(#theta)");
     Acceptance_X_Proj->SetYTitle("entries");
 
