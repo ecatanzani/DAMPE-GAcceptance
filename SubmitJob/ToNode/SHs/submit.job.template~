@@ -1,0 +1,37 @@
+#!/bin/sh
+
+run_exec () {
+    CMD="_EXEC_"; echo ${CMD}; ${CMD};
+}
+
+echo "`whoami` @ `hostname` : `pwd`"
+
+CMD="source _SETVAR_"; echo ${CMD}; ${CMD};
+
+echo " ------------------------ "
+echo " ---------- ENVS -------- "
+echo " ------------------------ "
+echo ""
+env
+echo ""
+echo " ------------------------ "
+echo " ------------------------ "
+echo ""
+
+HOME=`pwd`
+UNIQUE="$$_$RANDOM"
+SANDBOX=/data/$UNIQUE
+while [[ -d $SANDBOX ]]; do
+    UNIQUE="$$_$RANDOM"
+    SANDBOX=/data/$UNIQUE
+    echo "Searching for a free SandBox dir !"
+done
+mkdir -vp $SANDBOX
+cd $SANDBOX
+pwd
+
+run_exec
+
+ls -altrh
+mv -v *.root _OUTDIR_
+rm -rfv "$SANDBOX"
