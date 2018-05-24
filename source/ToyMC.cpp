@@ -24,7 +24,9 @@ int main(int argc,char *argv[])
     log_file_init(output_log_file);
   
     ///////////////////////// Defining histos....
-
+    
+    ///////////////////////////////////////////////////////// Geometrical acceptance histos
+    
     TH1F *hacc = new TH1F("hacc","Acceptance",1000,-0.5,0.5);
     hacc->GetXaxis()->SetTitle("Acceptance (m^{2}sr)");
     hacc->GetYaxis()->SetTitle("Trials");
@@ -36,38 +38,51 @@ int main(int argc,char *argv[])
     haccreldiff->GetYaxis()->SetTitle("Trials");
     haccreldiff->SetLineColor(kBlack);
     haccreldiff->SetFillColor(kSpring+1);
-
-    TH2D* theta_phi_all = new TH2D("Generated_Theta_Phi","Generated Theta/Phi", 1000, 0, 1, 1000, 0, 2.0*TMath::Pi());
-    theta_phi_all->SetXTitle("cos(#theta)");
-    theta_phi_all->SetYTitle("#phi (rad)");
-
-    TH1D *theta_gen = new TH1D("theta_gen"," cos(#theta) distribution ",1000,0,1);
-    theta_gen->SetXTitle("cos(#theta)");
-    theta_gen->SetYTitle("entries");
-
-    TH1D *phi_gen = new TH1D("phi_gen"," #phi distribution ",1000,0,2*TMath::Pi());
-    phi_gen->SetXTitle("#phi");
-    phi_gen->SetYTitle("entries");
-
-    TH2D* theta_phi_acceptance = new TH2D("Acceptance","Theta/Phi Acceptance", 1000, 0.5, 1, 1000, 0, 2.0*TMath::Pi());
-    theta_phi_acceptance->SetXTitle("cos(#theta)");
-    theta_phi_acceptance->SetYTitle("#phi (rad)");
-    theta_phi_acceptance->SetZTitle("Acceptance (m^{2})");
     
-    TH2D* theta_phi_inside = new TH2D("EventsDistribution","Events Angular Distibution", 1000, 0.5, 1, 1000, 0, 2.0*TMath::Pi());
-    theta_phi_inside->SetXTitle("cos(#theta)");
-    theta_phi_inside->SetYTitle("#phi (rad)");
-    theta_phi_inside->SetZTitle("#events");
+    TH2D* costheta_phi_acceptance = new TH2D("Acceptance","Theta/Phi Acceptance", 500, 0.5, 1, 500, 0, 2.0*TMath::Pi());
+    costheta_phi_acceptance->SetXTitle("cos(#theta)");
+    costheta_phi_acceptance->SetYTitle("#phi (rad)");
+    costheta_phi_acceptance->SetZTitle("Acceptance (m^{2})");
     
     TH1D *Acceptance_X_Proj = new TH1D("Acceptance_X_Proj"," cos(#theta) distribution ",1000,0.5,1);
     Acceptance_X_Proj->SetXTitle("cos(#theta)");
     Acceptance_X_Proj->SetYTitle("entries");
-
-    TH1D *Acceptance_Y_Proj = new	TH1D("Acceptance_Y_Proj"," #phi distribution ",1000,0,2*TMath::Pi());
+    
+    TH1D *Acceptance_Y_Proj = new    TH1D("Acceptance_Y_Proj"," #phi distribution ",1000,0,2*TMath::Pi());
     Acceptance_X_Proj->SetXTitle("#phi");
     Acceptance_X_Proj->SetYTitle("entries");
-  
+    
+    ///////////////////////////////////////////////////////// Events distribution histos
+    
+    TH2D* costheta_phi_inside = new TH2D("EventsDistribution","Events Angular Distibution", 500, 0.5, 1, 500, 0, 2.0*TMath::Pi());
+    costheta_phi_inside->SetXTitle("cos(#theta)");
+    costheta_phi_inside->SetYTitle("#phi (rad)");
+    costheta_phi_inside->SetZTitle("#events");
+    
+    ///////////////////////////////////////////////////////// Generated events histos
 
+    TH2D* costheta_phi_all = new TH2D("Generated_CosTheta_Phi","Generated Theta/Phi", 500, 0, 1, 500, 0, 2.0*TMath::Pi());
+    costheta_phi_all->SetXTitle("cos(#theta)");
+    costheta_phi_all->SetYTitle("#phi (rad)");
+
+    TH1D *costheta_gen = new TH1D("costheta_gen"," cos(#theta) distribution ",1000,0,1);
+    costheta_gen->SetXTitle("cos(#theta)");
+    costheta_gen->SetYTitle("entries");
+    
+    TH1D *phi_gen = new TH1D("phi_gen"," #phi distribution ",1000,0,2*TMath::Pi());
+    phi_gen->SetXTitle("#phi");
+    phi_gen->SetYTitle("entries");
+    
+    ///////////////////////////////////////////////////////// Selected events histos
+    
+    TH1D *costheta_sel = new TH1D("costheta_sel"," cos(#theta) distribution ",1000,0,1);
+    costheta_sel->SetXTitle("cos(#theta)");
+    costheta_sel->SetYTitle("entries");
+    
+    TH1D *phi_sel = new TH1D("phi_sel"," #phi distribution ",1000,0,2*TMath::Pi());
+    phi_sel->SetXTitle("#phi");
+    phi_sel->SetYTitle("entries");
+    
   //////////////////////////////////////////////////////////////////
   
   
@@ -92,15 +107,17 @@ int main(int argc,char *argv[])
             }
             generate_coordinate(X,rand_gen);
             generate_theta_phi(theta,phi,rand_gen);
-            theta_phi_all->Fill(fabs(cos(theta)),phi);
-            theta_gen->Fill(fabs(cos(theta)));
+            costheta_phi_all->Fill(fabs(cos(theta)),phi);
+            costheta_gen->Fill(fabs(cos(theta)));
             phi_gen->Fill(phi);
             obtain_direction(theta,phi,dir);
             check_acceptance(X,dir,theta,accepted_event);
             if(accepted_event) {
                 accepted_events[idx_trial]++;
-                theta_phi_acceptance->Fill(fabs(cos(theta)),phi);
-                theta_phi_inside->Fill(fabs(cos(theta)),phi);
+                costheta_phi_acceptance->Fill(fabs(cos(theta)),phi);
+                costheta_phi_inside->Fill(fabs(cos(theta)),phi);
+                costheta_sel->Fill(cos(theta));
+                phi_sel->Fill(phi);
                 Acceptance_X_Proj->Fill(fabs(cos(theta)));
                 Acceptance_Y_Proj->Fill(phi);
             }
@@ -128,16 +145,16 @@ int main(int argc,char *argv[])
 
     ///////////////////// Computing final histos /////////////////////
     
-    theta_phi_acceptance->Divide(theta_phi_all);
-    theta_phi_acceptance->Scale(TMath::Power(Lgen,2));
+    costheta_phi_acceptance->Divide(costheta_phi_all);
+    costheta_phi_acceptance->Scale(TMath::Power(Lgen,2));
     
-    theta_phi_inside->Scale(TMath::Power(Lgen,2));
+    //costheta_phi_inside->Scale(TMath::Power(Lgen,2));
     
-    for (Int_t xx=1; xx<=theta_phi_acceptance->GetNbinsX(); xx++) {
-        costheta = theta_phi_acceptance->GetXaxis()->GetBinCenter(xx);
-        for (Int_t yy=1; yy<=theta_phi_acceptance->GetNbinsY(); yy++) {
-            bin_content = theta_phi_acceptance->GetBinContent(xx, yy);
-            theta_phi_acceptance->SetBinContent(xx, yy, costheta*bin_content);
+    for (Int_t xx=1; xx<=costheta_phi_acceptance->GetNbinsX(); xx++) {
+        costheta = costheta_phi_acceptance->GetXaxis()->GetBinCenter(xx);
+        for (Int_t yy=1; yy<=costheta_phi_acceptance->GetNbinsY(); yy++) {
+            bin_content = costheta_phi_acceptance->GetBinContent(xx, yy);
+            costheta_phi_acceptance->SetBinContent(xx, yy, costheta*bin_content);
         }
     }
     
@@ -150,12 +167,15 @@ int main(int argc,char *argv[])
     haccreldiff->Fit("gaus");
     haccreldiff->Write();
 
-    theta_phi_all->Write();
-    theta_phi_acceptance->Write();
-    theta_phi_inside->Write();
+    costheta_phi_all->Write();
+    costheta_phi_acceptance->Write();
+    costheta_phi_inside->Write();
     
-    theta_gen->Fit("pol1");
-    theta_gen->Write();
+    costheta_sel->Write();
+    phi_sel->Write();
+    
+    costheta_gen->Fit("pol1");
+    costheta_gen->Write();
 
     phi_gen->Fit("pol0");
     phi_gen->Write();

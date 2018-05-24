@@ -2,10 +2,10 @@
 
 ////////////////////////// Simulation Parameters //////////////////////////
 
-Simulation timestamp: 1526978080
+Simulation timestamp: 1527155349
 Simulation TRandom3 seed: 9
 Number of trials: 10
-Number of events per trial: 1e+06
+Number of events per trial: 1e+09
 
 ////////////////////////// Detector Parameters //////////////////////////
 
@@ -40,51 +40,51 @@ Number of checked layers for geometrical acceptace computing: 2
  Try[9]
 	-> 1%	-> 2%	-> 3%	-> 4%	-> 5%	-> 6%	-> 7%	-> 8%	-> 9%	-> 10%	-> 11%	-> 12%	-> 13%	-> 14%	-> 15%	-> 16%	-> 17%	-> 18%	-> 19%	-> 20%	-> 21%	-> 22%	-> 23%	-> 24%	-> 25%	-> 26%	-> 27%	-> 28%	-> 29%	-> 30%	-> 31%	-> 32%	-> 33%	-> 34%	-> 35%	-> 36%	-> 37%	-> 38%	-> 39%	-> 40%	-> 41%	-> 42%	-> 43%	-> 44%	-> 45%	-> 46%	-> 47%	-> 48%	-> 49%	-> 50%	-> 51%	-> 52%	-> 53%	-> 54%	-> 55%	-> 56%	-> 57%	-> 58%	-> 59%	-> 60%	-> 61%	-> 62%	-> 63%	-> 64%	-> 65%	-> 66%	-> 67%	-> 68%	-> 69%	-> 70%	-> 71%	-> 72%	-> 73%	-> 74%	-> 75%	-> 76%	-> 77%	-> 78%	-> 79%	-> 80%	-> 81%	-> 82%	-> 83%	-> 84%	-> 85%	-> 86%	-> 87%	-> 88%	-> 89%	-> 90%	-> 91%	-> 92%	-> 93%	-> 94%	-> 95%	-> 96%	-> 97%	-> 98%	-> 99%	-> 100%
 
-Accepted 6519 events over 1e+06
-Acceptance: 0.311501 m^2sr
-Acceptance relatice difference: -0.0958086
+Accepted 6603811 events over 1e+09
+Acceptance: 0.315554 m^2sr
+Acceptance relatice difference: -0.0840452
 
 
-Accepted 6655 events over 1e+06
-Acceptance: 0.318 m^2sr
-Acceptance relatice difference: -0.0769452
+Accepted 6600830 events over 1e+09
+Acceptance: 0.315412 m^2sr
+Acceptance relatice difference: -0.0844587
 
 
-Accepted 6552 events over 1e+06
-Acceptance: 0.313078 m^2sr
-Acceptance relatice difference: -0.0912314
+Accepted 6603614 events over 1e+09
+Acceptance: 0.315545 m^2sr
+Acceptance relatice difference: -0.0840725
 
 
-Accepted 6664 events over 1e+06
-Acceptance: 0.31843 m^2sr
-Acceptance relatice difference: -0.0756969
+Accepted 6605544 events over 1e+09
+Acceptance: 0.315637 m^2sr
+Acceptance relatice difference: -0.0838048
 
 
-Accepted 6603 events over 1e+06
-Acceptance: 0.315515 m^2sr
-Acceptance relatice difference: -0.0841577
+Accepted 6606438 events over 1e+09
+Acceptance: 0.31568 m^2sr
+Acceptance relatice difference: -0.0836808
 
 
-Accepted 6395 events over 1e+06
-Acceptance: 0.305576 m^2sr
-Acceptance relatice difference: -0.113007
+Accepted 6603497 events over 1e+09
+Acceptance: 0.315539 m^2sr
+Acceptance relatice difference: -0.0840888
 
 
-Accepted 6563 events over 1e+06
-Acceptance: 0.313604 m^2sr
-Acceptance relatice difference: -0.0897057
+Accepted 6606302 events over 1e+09
+Acceptance: 0.315673 m^2sr
+Acceptance relatice difference: -0.0836997
 
 
-Accepted 6822 events over 1e+06
-Acceptance: 0.32598 m^2sr
-Acceptance relatice difference: -0.0537822
+Accepted 6601838 events over 1e+09
+Acceptance: 0.31546 m^2sr
+Acceptance relatice difference: -0.0843189
 
 
-Accepted 6674 events over 1e+06
-Acceptance: 0.318908 m^2sr
-Acceptance relatice difference: -0.0743099
+Accepted 6606917 events over 1e+09
+Acceptance: 0.315702 m^2sr
+Acceptance relatice difference: -0.0836144
 
 
-Accepted 6773 events over 1e+06
-Acceptance: 0.323638 m^2sr
-Acceptance relatice difference: -0.0605785
+Accepted 6603254 events over 1e+09
+Acceptance: 0.315527 m^2sr
+Acceptance relatice difference: -0.0841225
