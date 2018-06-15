@@ -18,8 +18,8 @@ S_INC  = $(TOP)/include/
 
 DEBUG_DIR    = Debug/obj
 RELEASE_DIR  = Release/obj
-DEBUG_PROG   = Debug/JToyMC
-RELEASE_PROG = Release/JToyMC
+DEBUG_PROG   = Debug/JGAcceptance
+RELEASE_PROG = Release/JGAcceptance
 
 #dependencie
 DIPS_INCLUDE = $(shell root-config --cflags)
