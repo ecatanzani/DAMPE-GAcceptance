@@ -12,7 +12,7 @@ if [[ ! -f ${ENV_PATH} ]]; then echo "$ENV_PATH does not exist" >&2; exit 1; fi
 export WORKDIR=/storage/gpfs_data/dampe/users/ecatanzani/MyRepos/GitHub/Stuff/DAMPE-GAcceptance/SubmitJob/Local
 if [[ ! -d $WORKDIR ]]; then echo "$WORKDIR does not exist" >&2; exit 1; fi
 
-export EXEC=${WORKDIR}/ExeSW/Release/JToyMC
+export EXEC=${WORKDIR}/ExeSW/Release/JGAcceptance
 if [[ ! -f $EXEC ]]; then echo "$EXEC does not exist" >&2 ; exit 1; fi
 
 SUBMITDIR=${WORKDIR}/SHs

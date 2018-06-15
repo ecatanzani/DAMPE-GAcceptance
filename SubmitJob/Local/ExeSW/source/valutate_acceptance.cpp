@@ -1,5 +1,5 @@
 
-#include "MyJHead.h"
+#include "MyHead.h"
 
 void check_acceptance(Double_t X[],Double_t dir[],Double_t theta,Bool_t &accepted_event) {
   Double_t X_detectors[3][n_checked_detectors];
