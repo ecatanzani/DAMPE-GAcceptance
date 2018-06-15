@@ -13,13 +13,22 @@ ifeq ($(HAVE_TERM),dumb)
 	HAVE_TERM = none
 endif
 #program name
-S_DIR  = $(TOP)/source/
-S_INC  = $(TOP)/include/
+S_DIR  = $(TOP)/AcceptanceXProj/AcceptanceXProj/source/
 
-DEBUG_DIR    = Debug/obj
-RELEASE_DIR  = Release/obj
-DEBUG_PROG   = Debug/ToyMC
-RELEASE_PROG = Release/ToyMC
+ifeq ($(shell uname -s),Linux) # LINUX
+        S_INC = $(TOP)/LinuxInclude/
+        DEBUG_DIR    = Debug/linux/obj
+        RELEASE_DIR  = Release/linux/obj
+        DEBUG_PROG   = Debug/linux/GAcceptance
+        RELEASE_PROG = Release/linux/GAcceptance
+endif
+ifeq ($(shell uname -s),Darwin) # macOS
+        S_INC  = $(TOP)/AcceptanceXProj/AcceptanceXProj/include/
+        DEBUG_DIR    = Debug/macOS/obj
+        RELEASE_DIR  = Release/macOS/obj
+        DEBUG_PROG   = Debug/macOS/GAcceptance
+        RELEASE_PROG = Release/macOS/GAcceptance
+endif
 
 #dependencie
 DIPS_INCLUDE = $(shell root-config --cflags)
