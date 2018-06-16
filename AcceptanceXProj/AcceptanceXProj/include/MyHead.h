@@ -20,7 +20,7 @@
 //#define trials_number 1000
 //#define events_per_trial 1000
 
-const static Int_t trials_number = 1e+6;
+const static Int_t trials_number = 1e+3;
 const static Int_t events_per_trial = 1e+9;
 
 const static time_t time_stamp = time(0);                                     //Setting timestamp for the out files
