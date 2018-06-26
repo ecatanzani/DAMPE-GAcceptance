@@ -1,0 +1,2 @@
+/opt/exp_software/dampe/setup/setup.sh: line 71: source: geant4make.sh: file not found
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1

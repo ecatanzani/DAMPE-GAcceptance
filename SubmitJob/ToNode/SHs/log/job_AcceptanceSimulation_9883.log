@@ -1,0 +1,35 @@
+Sender: LSF System <lsfadmin@wn-205-11-31-06-a>
+Subject: Job 14778799: <job_AcceptanceSimulation_9883> in cluster <t1lsf913> Exited
+
+Job <job_AcceptanceSimulation_9883> was submitted from host <ui-tier1> by user <ecatanzani> in cluster <t1lsf913>.
+Job was executed on host(s) <wn-205-11-31-06-a>, in queue <dampe_usr>, as user <ecatanzani> in cluster <t1lsf913>.
+</home/DAMPE/ecatanzani> was used as the home directory.
+</storage/gpfs_data/dampe/users/ecatanzani/MyRepos/DAMPE/Stuff/DAMPE-GAcceptance/SubmitJob/ToNode/SHs> was used as the working directory.
+Started at Mon Jun 25 09:32:52 2018
+Results reported on Mon Jun 25 09:32:53 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/storage/gpfs_data/dampe/users/ecatanzani/MyRepos/DAMPE/Stuff/DAMPE-GAcceptance/SubmitJob/ToNode/SHs/jobs/job_AcceptanceSimulation_9883.job
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   0.26 sec.
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Run time :                                   1 sec.
+    Turnaround time :                            13 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file </storage/gpfs_data/dampe/users/ecatanzani/MyRepos/DAMPE/Stuff/DAMPE-GAcceptance/SubmitJob/ToNode/SHs/log/job_AcceptanceSimulation_9883.err> for stderr output of this job.
+

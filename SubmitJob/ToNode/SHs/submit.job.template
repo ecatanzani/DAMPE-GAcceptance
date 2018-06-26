@@ -1,7 +1,7 @@
 #!/bin/sh
 
 run_exec () {
-    CMD="_EXEC_; echo ${CMD}; ${CMD};
+    CMD="_EXEC_"; echo ${CMD}; ${CMD};
 }
 
 echo "`whoami` @ `hostname` : `pwd`"
